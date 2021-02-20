@@ -59,10 +59,38 @@ function hue2hex(hue)
 		(((steps % 2) ? 0xff : color) << (4 - Math.floor(steps / 2)) % 3 * 8)
 	);
 }
+step = 0xff * 6 / tc.h;
+function drawHue(offset)
+{
+	for (let y = 0; y < tc.h; y++)
+		hline(tc, 0, y, tc.w, hue2hex(Math.round(y*step + offset)));
+}
 setTimeout(() =>
 {
-	let step = 0xff * 6 / tc.h;
-	for (let y = 0; y < tc.h; y++)
-		hline(tc, 0, y, tc.w, hue2hex(y*step));
+	drawHue(0);
 	tc.update();
 }, 1000);
+
+// scroll the hue thing
+// stop with hueScrollStop()
+let hueScrollId;
+function hueScrollLoop()
+{
+	hueScrollId = undefined;
+	drawHue(Date.now());
+	tc.update();
+	// animate
+	hueScrollStart();
+}
+function hueScrollStart()
+{
+	if (!hueScrollId)
+		hueScrollId = window.requestAnimationFrame(hueScrollLoop);
+}
+function hueScrollStop()
+{
+	if (!hueScrollId) return;
+	window.cancelAnimationFrame(hueScrollId);
+	hueScrollId = undefined;
+}
+setTimeout(hueScrollStart, 2000);
