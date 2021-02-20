@@ -30,7 +30,7 @@ function hex2hsl(hex)
 				hue = 60*((colors[0] - colors[1]) / diff + 4);
 				break;
 		}
-	if (hue < 0) hue += 360;
+	if (hue < -30) hue += 360;
 	// saturation is 0 if diff is 0, otherwise it's diff / (1 - |min+max - 1|)
 	return [hue, diff ? diff / (1 - Math.abs(min + max - 1)) : 0, (min + max) / 2];
 }
