@@ -81,7 +81,7 @@ class TextCanvas
 	// sets the pixel at (x, y) to be the color (as hex)
 	setpixel(x, y, color)
 	{
-		if (x < this.w && y < this.h && color.constructor == Number)
+		if (x >= 0 && x < this.w && y >= 0 && y < this.h && color.constructor == Number)
 			return this.pixels[y * this.w + x] = color;
 		else if (color.constructor != Number) console.error(color, "is not a number!");
 		else console.error(`(${x}, ${y}) is out of bounds!`);
