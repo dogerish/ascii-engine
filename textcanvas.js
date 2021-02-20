@@ -86,4 +86,12 @@ class TextCanvas
 		else if (color.constructor != Number) enotnum(color);
 		else eoob(x, y);
 	}
+
+	// fills the screen with color
+	fill(color)
+	{
+		if (color.constructor != Number) return notnum(color);
+		for (let i = 0; i < this.w*this.h; i++)
+			this.pixels[i] = color;
+	}
 }
