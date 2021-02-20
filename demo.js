@@ -72,25 +72,10 @@ setTimeout(() =>
 }, 1000);
 
 // scroll the hue thing
-// stop with hueScrollStop()
-let hueScrollId;
-function hueScrollLoop()
+// stop with stopAnim()
+draw = function()
 {
-	hueScrollId = undefined;
 	drawHue(Date.now());
 	tc.update();
-	// animate
-	hueScrollStart();
-}
-function hueScrollStart()
-{
-	if (!hueScrollId)
-		hueScrollId = window.requestAnimationFrame(hueScrollLoop);
-}
-function hueScrollStop()
-{
-	if (!hueScrollId) return;
-	window.cancelAnimationFrame(hueScrollId);
-	hueScrollId = undefined;
-}
-setTimeout(hueScrollStart, 2000);
+};
+setTimeout(startAnim, 2000);
