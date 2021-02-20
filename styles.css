@@ -1,3 +1,7 @@
 body {
 	background: #222;
 }
+.text-canvas {
+	background: #000;
+	display: inline-block;
+}
