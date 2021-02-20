@@ -83,7 +83,7 @@ class TextCanvas
 	{
 		if (x >= 0 && x < this.w && y >= 0 && y < this.h && color.constructor == Number)
 			return this.pixels[y * this.w + x] = color;
-		else if (color.constructor != Number) console.error(color, "is not a number!");
-		else console.error(`(${x}, ${y}) is out of bounds!`);
+		else if (color.constructor != Number) enotnum(color);
+		else eoob(x, y);
 	}
 }
