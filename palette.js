@@ -16,7 +16,7 @@ const TC_CLRPAL =
 
 // the character palette for TextCanvas to choose from
 // in order of emptiest to lightest
-const TC_CHARPAL = " .-+!?%$#@";
+const TC_CHARPAL = " .-!+?#%$@";
 
 // turn TC_CLRPAL an array of objects with name, hue, and saturation properties
 // parse strings into objects

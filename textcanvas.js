@@ -44,7 +44,7 @@ class TextCanvas
 			if (!score) break;
 		}
 		// character is selected by turning lightness into an index of TC_CHARPAL
-		return [TC_CHARPAL[Math.round(light * (TC_CHARPAL.length - 1))], best[1]];
+		return [TC_CHARPAL[Math.floor(light * (TC_CHARPAL.length - 1))], best[1]];
 	}
 	// push the pixel buffer to the display surface
 	update()
