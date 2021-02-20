@@ -52,10 +52,16 @@ class TextCanvas
 		// just to hold things before showing them
 		let out = "";
 		let color;
+		let rawcolor;
+		let ch;
 		for (let i = 0; i < this.pixels.length; i++)
 		{
 			// new line every row
 			if (i && !(i % this.w)) out += "<br>";
+			// don't recalculate the same color every pixel
+			if (this.pixels[i] == rawcolor) { out += ch; continue; }
+			rawcolor = this.pixels[i];
+
 			let data = this.textify.apply(null, hex2hsl(this.pixels[i]));
 			// switch colors if we need to
 			if (data[1] != color)
@@ -65,7 +71,7 @@ class TextCanvas
 				out += `<font color="${data[1]}">`;
 				color = data[1];
 			}
-			out += data[0];
+			out += ch = data[0];
 		}
 		// add font if it has content
 		if (color != undefined) out += "</font>";
