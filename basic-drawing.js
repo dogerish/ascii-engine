@@ -22,7 +22,7 @@ function hline(tc, x, y, l, color)
 	if (y < 0 || y > tc.h) return;
 	if (color.constructor != Number) return enotnum(color);
 	// if l is negative, put x back there and make it positive
-	if (l < 0) x -= l *= -1;
+	if (l < 0) x -= (l *= -1) - 1;
 	// cap out at edge of screen or length (l), whichever comes first
 	let max = (tc.w < x + l) ? tc.w : x + l;
 	y *= tc.w; if (x < 0) x = 0;
@@ -35,7 +35,7 @@ function vline(tc, x, y, l, color)
 	if (x < 0 || x > tc.w) return;
 	if (color.constructor != Number) return enotnum(color);
 	// if l is negative, put y back there and make it positive
-	if (l < 0) y -= l *= -1;
+	if (l < 0) y -= (l *= -1) - 1;
 	// cap out at edge of screen or length (l), whichever comes first
 	let max = (tc.h < y + l) ? tc.h : y + l;
 	if (y < 0) y = 0;
